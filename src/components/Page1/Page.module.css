@@ -1,0 +1,30 @@
+.page1{
+    height: 100vh;
+    width: 100%;
+}
+.page1 img{
+    position: relative;
+    width: 100%;
+}
+.explorebtn{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4vw;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+button{
+    font-size: 0.6vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 4% 10%;
+    border: 2px solid rgb(49, 49, 216);
+    border-radius: 10px;
+    background: white;
+}
