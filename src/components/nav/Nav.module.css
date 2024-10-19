@@ -1,7 +1,7 @@
 .nav {
   width: 100%;
   height: 4vw;
-  z-index: 999;
+  z-index: 99;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -21,9 +21,12 @@
   gap: 1vw;
 }
 .icon {
+  position: relative;
+  cursor: pointer;
   font-size: 1.3vw;
   font-weight: 100;
   color: black;
+  z-index: 999;
   text-decoration: none;
 }
 .icon:nth-child(1) {
@@ -48,11 +51,14 @@
   width: 100%;
 }
 .logo{
-  z-index: 999;
+  z-index: 99;
   left: 50%;
   padding-top: 1em;
   transform: translate(-50%);
   position: fixed;
+}
+.logo h1{
+  width: fit-content;
 }
 @media (max-width: 600px) {
   .nav {
@@ -63,6 +69,13 @@
     padding: 0 10px;
     background-color: rgb(255, 196, 196);
   }
+  .logo{
+    z-index: 999;
+    left: 22%;
+    padding-top: 2em;
+    transform: translate(-10);
+    position: fixed;
+  }
   a {
     font-size: 3rem;
     text-decoration: none;
@@ -70,7 +83,35 @@
   .option > ul {
     display: none;
   }
-  button {
-    padding: 5px 20px;
+  
+  .contact {
+    display: none;
+  }
+  .icon {
+    font-size: 4vw;
+    font-weight: 100;
+    color: black;
+    text-decoration: none;
+
+  }
+  .icon:nth-child(1) {
+    font-size: 4vw;
+  }
+  .icon:nth-child(2) {
+    font-size: 4vw;
+  }
+  .icon:nth-child(4) {
+    font-size: 4vw;
+    padding-left: 1vw;
+  }
+  .icon:nth-child(5) {
+    font-size: 4vw;
+    background-color: red;
+  }
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    gap: 3vw;
   }
 }

@@ -1,6 +1,7 @@
 .page1{
     height: 100vh;
     width: 100%;
+    margin-bottom: 4vw;
 }
 .page1 img{
     position: relative;
@@ -19,7 +20,7 @@
     align-items: center;
     color: white;
 }
-button{
+.explorebtn button{
     font-size: 0.6vw;
     font-weight: 900;
     text-transform: uppercase;
@@ -27,4 +28,41 @@ button{
     border: 2px solid rgb(49, 49, 216);
     border-radius: 10px;
     background: white;
+}
+@media (max-width:600px) {
+    .page1{
+        height: 104vh;
+        background-color: red;
+    }
+    .page1 img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: 55% 0;
+    }
+    .explorebtn{
+        position: absolute;
+        top: 95%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30vw;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+    }
+    .explorebtn h1{
+        font-size: 7vw;
+    }
+    .explorebtn button{
+        font-size: 4vw;
+        font-weight: 900;
+        text-transform: uppercase;
+        padding: 6vw 10vw;
+        border: 2px solid rgb(49, 49, 216);
+        border-radius: 4px;
+        background: white;
+    }
 }

@@ -1,0 +1,28 @@
+.sidemenu{
+    z-index: 999;
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.196);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.content{
+    height: 100vh;
+    position: absolute;
+    width: 40%;
+    right: 0;
+    background-color: white;
+}
+.content button{
+    height: 3.5vw;
+    width: 3.5vw;
+    font-size: 3vw;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border-radius: 50px;
+    border: none;
+    transform: translateX(35vw) translateY(2vw);
+}
