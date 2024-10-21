@@ -31,7 +31,9 @@ function Nav() {
           scale: 14,
           y: "40vh",
           yPercent: -50,
+          duration:5,
           color: "white",
+          ease: "power1.out",
         },
         {
           scale: 1,
@@ -39,7 +41,6 @@ function Nav() {
           yPercent: 0,
           duration: 5,
           color: "black",
-          ease: "power1.out",
         }
       ),
       scrub: true,

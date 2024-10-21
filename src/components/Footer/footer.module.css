@@ -1,0 +1,147 @@
+#footer{
+    min-height: 100vh;
+    width: 100%;
+    color: rgb(225, 225, 225);
+    background-color: black;
+}
+.container{
+    height:100%;
+    max-width: 80%;
+    margin-left: 10%;
+    padding: 4vw 3vw 0 3vw;
+    /* background-color: rgba(255, 255, 0, 0.277); */
+}
+.container .topContainer{
+    height: 74%;
+    width: 100%;
+    display: flex;
+    /* background-color: cadetblue; */
+}
+.topContainer .box1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.topContainer .box1 .top{
+    min-height: 72%;
+    max-width: 100%;
+    display: flex;
+}
+.topContainer .box1 .top .left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+.first{
+    color: gray;
+}
+.second{
+    border-bottom: 1px solid rgb(226, 226, 226);
+    width: fit-content;
+}
+.topContainer .box1 .top .right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+.topContainer .box1 .bottom{
+    height: 28%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.topContainer .box2{
+    height: 100%;
+    width: 50%;
+    /* background-color: rgba(174, 112, 46, 0.365); */
+}
+.container .bottomContainer{
+    height: 26%;
+    width: 100%;
+    background-color: bisque;
+}
+.form{
+    min-height: 100%;
+    max-width: 100%;
+}
+.form h3{
+    margin-bottom: 2vw;
+    color: grey;
+}
+form{
+    min-height: 100%;
+    max-width: 100%;
+    margin-bottom: 4vw;
+    /* background-color: rgb(189, 127, 34); */
+}
+.input_data{
+    width: 100%;
+    height: 5vh;
+    position: relative;
+    margin-bottom: 2vw;
+    /* background-color: red; */
+}
+.input_data input{
+    min-width: 100%;
+    height: 100%;
+    border: none;
+    background-color: inherit;
+    border-bottom: 1px solid rgb(180, 177, 177);
+    color: white;
+    font-size: 1vw;
+}
+.input_data input:focus~label,.input_data input:valid~label{
+    transform: translateY(-22px); 
+}
+.underline{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+}
+.underline:after{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+ input:focus~.underline:after, input:valid~.underline:after{
+    transform: scaleX(1); 
+}
+.input_data input:focus{
+    outline: none;
+}
+
+form h4{
+    margin-bottom: 2vw;
+    color: white;
+    text-decoration: none;
+    /* border-bottom: 1px solid white; */
+    width: fit-content;
+    line-height: 1.5rem;
+}
+.input_data label{
+    color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease ;
+    pointer-events: none;
+}
+.input_data button{
+    color: white;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 40%;
+}
