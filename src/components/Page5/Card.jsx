@@ -10,7 +10,7 @@ function Card({video,h2,para,link}) {
       <div className={style.content}>
         <h3>{h2}</h3>
         <p>{para}</p>
-        <Link><h4>{link}</h4></Link>
+        <Link ><h4>{link}</h4></Link>
       </div>
     </div>
   );

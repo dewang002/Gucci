@@ -26,19 +26,42 @@ export const formdata=[
     {
         title:"STORE LOCATOR",
         para:false,
-        input:true,
+        input:"Country / Region ,City",
+        underline:true,
         link:false
     },
     {
         title:"SIGN UP FOR GUCCI UPDATES",
         para: "By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives. More details on this are provided in our Privacy Policy",
-        input:true,
+        input:"E-Mail",
+        underline:true,
         link:false
     },
     {
         title:"COUNTRY / REGION",
         para:false,
-        input:false,
+        underline:false,
         link:true
     }
 ]
+
+export const countrydata={
+    INDIA:{
+        id:1,
+        language:"hindi",
+        country:"India",
+        URL:'data of india store'
+    },
+    JAPAN:{
+        id:1,
+        language:"japanies",
+        country:"Japan",
+        URL:'data of japan store'
+    },
+    LONDON:{
+        id:1,
+        language:"english",
+        country:"London",
+        URL:'data of london store'
+    },
+}

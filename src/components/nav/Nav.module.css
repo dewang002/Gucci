@@ -17,7 +17,7 @@
 .right {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: bottom;
   gap: 1vw;
 }
 .icon {
@@ -37,10 +37,10 @@
 }
 .icon:nth-child(4) {
   font-size: 1.5vw;
-  padding-left: 1vw;
+  padding-left: 0vw;
 }
 .icon:nth-child(5) {
-  font-size: 1vw;
+  font-size: 1.5rem;
 }
 .content{
   width: 100%;
@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     padding: 0 10px;
-    background-color: rgb(255, 196, 196);
+    /* background-color: rgb(255, 196, 196); */
   }
   .logo{
     z-index: 999;
@@ -106,7 +106,7 @@
   }
   .icon:nth-child(5) {
     font-size: 4vw;
-    background-color: red;
+    /* background-color: red; */
   }
   .right {
     display: flex;

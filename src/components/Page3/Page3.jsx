@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 function Page3() {
   return (
     <div className={style.page3}>
+      <div className={style.imgbox} >
       <img src="./male1.avif" alt="" />
+      </div>
       <div className={style.content}>
        <Link><button className={style.btn}>MEN</button></Link> 
         <div className={style.bottom}>

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./footer.module.css";
-import Form from "./Form"
+import Form from "./Form";
 import { formdata } from "../../utils/data";
 function Footer() {
   return (
@@ -18,7 +18,14 @@ function Footer() {
                   "Email Unsubscribe",
                   "Sitemap",
                 ].map((elem, index) => (
-                  <h3 key={index} className={index === 0 ? style.first : style.second}>{elem}</h3>
+                  <>
+                  <h3
+                    key={index}
+                    className={index === 0 ? style.first : style.second}
+                  >
+                    {elem}
+                  </h3>
+                  </>
                 ))}
               </div>
               <div className={style.right}>
@@ -32,28 +39,50 @@ function Footer() {
                   "Privacy & Cookie Policy",
                   "Corporate Information",
                 ].map((elem, index) => (
-                    <h3 key={index} className={index === 0 ? style.first : style.second}>{elem}</h3>
-                  ))}
+                  <h3
+                    key={index}
+                    className={index === 0 ? style.first : style.second}
+                  >
+                    {elem}
+                  </h3>
+                ))}
               </div>
             </div>
             <div className={style.bottom}>
-            {[
-                  "GUCCI SERVICES",
-                  "Discover Our Services",
-                  "Book an Appointment",
-                  "Collect In Store"
-                  
-                ].map((elem, index) => (
-                    <h3 key={index} className={index === 0 ? style.first : style.second}>{elem}</h3>
-                  ))}
+              {[
+                "GUCCI SERVICES",
+                "Discover Our Services",
+                "Book an Appointment",
+                "Collect In Store",
+              ].map((elem, index) => (
+                <h3
+                  key={index}
+                  className={index === 0 ? style.first : style.second}
+                >
+                  {elem}
+                </h3>
+              ))}
             </div>
           </div>
           <div className={style.box2}>
-            
-          <Form data={formdata} /> 
+            <Form data={formdata} />
           </div>
         </div>
-        <div className={style.bottomContainer}></div>
+        <div className={style.bottomContainer}>
+          <div className={style.top}>
+            <p>
+              © 2016 - 2022 Guccio Gucci S.p.A. - All rights reserved. SIAE
+              LICENCE # 2294/I/1936 and 5647/I/1936
+            </p>
+          </div>
+        </div>
+        <div className={style.mainlogo}>
+          <img
+            style={{ width: "100%", objectFit: "cover", paddingBottom: "4vw" }}
+            src="./public/main_logo.png"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

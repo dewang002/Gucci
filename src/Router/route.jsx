@@ -1,20 +1,32 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Home from '../components/Home/Home'
-import Page from '../components/Page1/Page'
-import App from '../App'
+import { createBrowserRouter } from "react-router-dom";
+import Home from "../components/Home/Home";
+import Page from "../components/Page1/Page";
+import App from "../App";
+import Womens from "../components/womensCloth/Womens";
+import Mens from "../components/Mens/Mens";
 export const route = createBrowserRouter([
-    {
-        path:'/',
-        element:<App />,
-        children:[
-           { path:'/',
-             element:<Home />
-           },
-           {
-             path:"/page2",
-             element:<Page />,
-           }
-        ],
-    },
-    
-])
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/", element: <Home /> },
+      {
+        path: "/page2",
+        element: <Page />,
+        children: [],
+      },
+    ],
+  },
+  {
+    path: "/:womens",
+    element: <Womens />,
+    children: [
+    ],
+  },
+  {
+    path: "/Mens-loafers-shoes",
+    element: <Mens />,
+    children: [
+    ],
+  },
+]);
