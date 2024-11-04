@@ -8,7 +8,7 @@ function useShoesData() {
         setshoes(result)
     }
     useEffect(()=>{
-        shoesdata()
+        !shoes&&shoesdata()
     },[])
   return shoes
 }

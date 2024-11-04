@@ -4,6 +4,7 @@ import Page from "../components/Page1/Page";
 import App from "../App";
 import Womens from "../components/womensCloth/Womens";
 import Mens from "../components/Mens/Mens";
+import Product from "../components/Product/Product";
 export const route = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,11 @@ export const route = createBrowserRouter([
     path: "/Mens-loafers-shoes",
     element: <Mens />,
     children: [
+      
     ],
   },
+  {path:"/Mens-loafers-shoes/product/:id",
+    element:<Product />,
+    children:[]
+  }
 ]);

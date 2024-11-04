@@ -1,5 +1,6 @@
 #mens_shoes {
- 
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 100;
   transform: translateY(4vw);
   height: 100vh;
   width: 100%;
@@ -68,13 +69,13 @@
   height: 6.5rem;
   width: 100%;
   display: flex;
+  font-weight: 600;
   padding: 0 1vw;
   justify-content: space-between;
 }
 .filter_header .left {
   height: 100%;
   width: 20%;
-  /* gap: 1rem; */
   display: flex;
 }
 .filter_header .left div {
@@ -85,11 +86,11 @@
   align-items: center;
 }
 .filter_header .left h3 {
-  font-size: 1.3vw;
+  font-size: 1vw;
   font-weight: 300;
 }
 .filter_header .left div:nth-child(1) h3 {
-  font-size: 1.3vw;
+  font-size: 1vw;
   border-bottom: 1px solid black;
 }
 
@@ -103,14 +104,55 @@
   width: 30%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   gap: 1rem;
   font-size: 1.3rem;
+}
+/* ---filter-box👇-------------------------------------------------------- */
+.filtersContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.dropdownWrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdownTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 10;
+  min-width: 200px;
+  padding: 8px 0;
+}
+
+.dropdownItem {
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
 }
 /* ---------------------card css------------------------------------ */
 .cards {
  
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -140,8 +182,8 @@
   opacity: 0;
   left: 0;
   top: 0;
-  z-index: 10;
-  background-color: white;
+  z-index: 0;
+  /* background-color: white; */
 }
 
 .show_img div i {
@@ -163,6 +205,9 @@
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.4);
   background-color: white;
 }
+.show_img_data h1{
+  font-size: 1.4rem;
+}
 .show_img_data a {
   text-decoration: none;
   font-size: 1.5rem;
@@ -182,6 +227,7 @@
 
 .item_imgs:hover .show_img {
   opacity: 1;
+  z-index: 1;
 }
 .card_data .item_imgs img {
   width: 100%;
