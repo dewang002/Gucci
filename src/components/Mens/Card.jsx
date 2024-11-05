@@ -6,7 +6,7 @@ import style from "./Mens.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-function Card({ img, img2, name, price ,productCode ,id }) {
+function Card({ img, img2, name, price, productCode, id }) {
   const [heart, setheart] = useState(false);
   const responsive = {
     superLargeDesktop: {
@@ -32,12 +32,10 @@ function Card({ img, img2, name, price ,productCode ,id }) {
     setheart(!heart);
   };
   return (
-    
-    <div  className={`${style.card}`}>
-      <Link to={`/Mens-loafers-shoes/product/${id}`} style={{textDecoration:"none",color:"black"}}>
+    <div className={`${style.card}`}>
       <div className={`${style.card_data}`}>
         {/* ------------------------------------------- */}
-        <div className={`${style.heart_box}`}>
+        <div className={`${style.heart_box} `}>
           <div onClick={handlefav} className={`${style.heart}`}>
             {heart ? <FaHeart /> : <CiHeart />}
           </div>
@@ -45,7 +43,7 @@ function Card({ img, img2, name, price ,productCode ,id }) {
         {/* ------------------------------------------- */}
         <div className={`${style.item_imgs}`}>
           <img src={img} alt="" />
-        {/*--------------------------------------------- */}
+          {/*--------------------------------------------- */}
           <div className={`${style.show_img}`}>
             <div className={`${style.img_box}`}>
               <Carousel infinite={true} responsive={responsive}>
@@ -57,18 +55,21 @@ function Card({ img, img2, name, price ,productCode ,id }) {
                 ))}
               </Carousel>
             </div>
-
-            <div className={`${style.show_img_data}`}>
-              <h1>{name}</h1>
-              <h2>{price}</h2>
-              Show This
-            </div>
+            <Link
+              to={`/Mens-loafers-shoes/product/${id}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <div className={`${style.show_img_data}`}>
+                <h1>{name}</h1>
+                <h2>{price}</h2>
+                Show This
+              </div>
+            </Link>
           </div>
           {/* -------------------------------- */}
         </div>
         <div className={`${style.item_data}`}></div>
       </div>
-      </Link>
     </div>
   );
 }

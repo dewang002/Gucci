@@ -9,7 +9,8 @@ import { Link, useParams } from "react-router-dom";
 import { CiShoppingCart } from "react-icons/ci";
 import { BiRuler } from "react-icons/bi";
 import chart from "../../../public/sizeChart.jpg";
-import { usestatus } from "../../utils/usestatus";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../utils/Store/Slice/addToCartSlice";
 
 const FullImg = ({ IMG, remove }) => {
   const handleClose = () => {
@@ -31,14 +32,16 @@ const FullImg = ({ IMG, remove }) => {
 
 function Product() {
   const { id } = useParams();
-  const [cartdata,setCartdata]= useState([])
-  const [addCart,setAddCart]= useState(false)
+  const dispatch = useDispatch()
+  const [cartdata, setCartdata] = useState([]);
   const [size, setSize] = useState(false);
   const [product, setProduct] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [currentImg, setCurrentImg] = useState(false);
   const shoes = useShoesData(); //data is here
-
+  
+  const data = useSelector(state => state.menshoes)
+  
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -73,9 +76,9 @@ function Product() {
       )[0];
       setproductdata(itemsdata);
       setProduct(data);
-      setCartdata(itemsdata)
+      setCartdata(itemsdata);
     }
-    document.addEventListener("click", (e)=>{
+    document.addEventListener("click", (e) => {
       if (shoesize.current && !shoesize.current.contains(e.target)) {
         setSize(false);
       }
@@ -87,17 +90,18 @@ function Product() {
   const handleClickSize = () => {
     setSize(!size);
   };
-  const handleCartItem = ()=>{
-    setAddCart(!addCart)
-  }
+  const handleCartItem = () => {
+      dispatch(addItem(cartdata))
+  };
   return (
     <>
       {currentImg ? (
         <FullImg IMG={currentImg} remove={setCurrentImg} />
       ) : (
         <>
-          <Nav data={addCart?cartdata:null}  />
+          <Nav />
           <div className={style.product}>
+            {/* ------------------------------------------------------ */}
             <div className={style.overlapping}>
               <h1>{productdata.price}</h1>
               <h2>{productdata.title}</h2>
@@ -116,8 +120,7 @@ function Product() {
                         width: "100%",
                         minHeight: "90%",
                         objectFit: "cover",
-                        objectPosition: "50% -1vh",
-                      }}
+                        objectPosition: "50% -1vh"}}
                       src={chart}
                       alt="size chart"
                     />
@@ -126,10 +129,10 @@ function Product() {
               </div>
 
               <button onClick={handleCartItem}>
-                {" "}
                 <span>Add to Cart</span> <CiShoppingCart />
               </button>
             </div>
+            {/* -------------------------------------------------------*/}
             <Carousel infinite={true} responsive={responsive}>
               {product.map((elem, index) => {
                 return (

@@ -10,23 +10,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Sidemenu from "../../utils/Sidemenu";
 import { usestatus } from "../../utils/usestatus";
 import { IoMdClose } from "react-icons/io";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, deleteItem, removeItem } from "../../utils/Store/Slice/addToCartSlice";
 gsap.registerPlugin(ScrollTrigger);
 // --------------small component----------------------------
-const Navlink = forwardRef(({ title, className, onClick }, addcartref) => {
+const Navlink = forwardRef(({ title, className, onClick, items }, addcartref) => {
   return (
-    <Link ref={addcartref} className={className} onClick={onClick}>
+    <Link ref={addcartref} className={className} onClick={onClick} items={items}>
       {title}
     </Link>
   );
 });
 // ----------------------------------------------------------
-function Nav({ data }) {
+function Nav() {
+  const addtocart = useSelector(state => state.cart.item)
   const location = useLocation();
-  const [listdata, setListdata] = useState([]);
+  const dispatch = useDispatch()
+  const [listdata, setListdata] = useState([]);//this have that data 
   const [cartView, setCartView] = useState(false);
   const [isopen, setIsopen] = useState(false);
   const status = usestatus();
   const cart = useRef();
+
   useEffect(() => {
     if (location.pathname === "/") {
       gsap.registerPlugin(ScrollTrigger);
@@ -119,23 +124,14 @@ function Nav({ data }) {
       });
     }
     document.addEventListener("mousedown", (e) => {
-    if (!cart.current?.contains(e.target)) setCartView(false);
-    });
-    if (data) {
-      setListdata([
-        {
-          title: data?.title,
-          img: data?.alternateGalleryImages[0]?.datasrc,
-          price: data?.price,
-        },
-      ]);
-    }
+    if (!cart.current?.contains(e.target)) setCartView(false);});
+    if (addtocart) {setListdata(addtocart)}
     return ()=>{
       document.removeEventListener("mousedown", (e) => {
         if (!cart.current?.contains(e.target)) setCartView(false);
         });
     }
-  }, [data]);
+  }, [addtocart]);
 
   const handleClose = () => {
     setCartView(!cartView);
@@ -143,6 +139,12 @@ function Nav({ data }) {
   const handleclick = () => {
     setIsopen(!isopen);
   };
+  const handleRemoveItems = (val)=>{
+    dispatch(removeItem(val))
+  }
+  const handleDeleteItems = (val)=>{
+    dispatch(deleteItem(val))
+  }
   return (
     <>
       <div className={`${style.nav} nav`}>
@@ -154,6 +156,7 @@ function Nav({ data }) {
         </div>
         <div className={style.right}>
           <Navlink
+            items={listdata.length}
             onClick={handleClose}
             className={`cart ${style.icon} icon`}
             title={<PiBagSimple />}
@@ -188,10 +191,10 @@ function Nav({ data }) {
         </Link>
       </div>
 
-      {/* ------------------------------add to cart---------------------------------      */}
+      {/* ------------------------------add to cart---------------------------------*/}
       <div
         ref={cart}
-        className={`${style.cart} ${cartView ? style.open : " "} `}
+        className={`${style.cart} ${cartView ? style.open : " "}`}
       >
         <div className={style.header}>
           ADDED TO SHOPPING BAG{" "}
@@ -203,6 +206,8 @@ function Nav({ data }) {
 
         <div className={style.body}>
           {listdata?.map((elem) => (
+            <>
+            
             <div className={style.content}>
               <div
                 style={{
@@ -210,7 +215,7 @@ function Nav({ data }) {
                   height: "100%",
                 }}
               >
-                <img src={elem.img} alt="" />
+                <img src={elem.alternateImage.datasrc} alt="" />
               </div>
               <div
                 style={{
@@ -222,14 +227,18 @@ function Nav({ data }) {
               >
                 <h1>{elem.title}</h1>
                 <h2>{elem.price}</h2>
-                {data && (
-                  <div style={{ display: "flex" }}>
+                {addtocart && (
+                  <div style={{ display: "flex",justifyContent:"start",alignItems:'center',gap:'1rem' }}>
                     <h2>Quantity : </h2>
-                    <span style={{ fontSize: "1.5rem" }}>0</span>
+                    <span style={{ fontSize: "1.5rem" }} onClick={()=>dispatch(addItem(elem))}>+</span>
+                    <span style={{ fontSize: "1.5rem" }}>{elem.quantity}</span>
+                    <span style={{ fontSize: "1.5rem" }} onClick={()=>handleRemoveItems(elem.productCode)}> -</span>
+                    <button onClick={()=>handleDeleteItems(elem.productCode)}>remove</button>
                   </div>
                 )}
               </div>
             </div>
+            </>
           ))}
         </div>
 

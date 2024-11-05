@@ -21,18 +21,16 @@ export const route = createBrowserRouter([
   {
     path: "/:womens",
     element: <Womens />,
-    children: [
-    ],
+    children: [],
   },
   {
     path: "/Mens-loafers-shoes",
     element: <Mens />,
-    children: [
-      
-    ],
+    children: [],
   },
-  {path:"/Mens-loafers-shoes/product/:id",
-    element:<Product />,
-    children:[]
-  }
+  {
+    path: "/Mens-loafers-shoes/product/:id",
+    element: <Product />,
+    children: [],
+  },
 ]);

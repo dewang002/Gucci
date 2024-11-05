@@ -22,9 +22,8 @@ function Cards({ data, lowprice, highprice }) {
   return (
     <div className={`${style.cards}`}>
       {all.map((elem) => (
-        <>
+        <React.Fragment key={elem.productCode}>
         <Card
-          key={elem.productCode}
           id={elem.productCode}
           productCode={elem.productCode}
           img={elem.primaryImage.src}
@@ -32,7 +31,7 @@ function Cards({ data, lowprice, highprice }) {
           name={elem.title}
           price={elem.rawPrice}
         />
-        </>
+        </React.Fragment>
       ))}
     </div>
   )

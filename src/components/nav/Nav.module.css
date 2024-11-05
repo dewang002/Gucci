@@ -35,10 +35,10 @@
   position: relative;
 }
 .icon:nth-child(1)::after {
+  content: attr(items);
   position: absolute;
   top: 30%;
   right: -40%;
-  content: "0";
   font-size: 1rem;
   color: white;
   background-color: #CC2B52;
@@ -79,7 +79,7 @@
   overflow: hidden;
   opacity: 0;
   scale: 95%;
-  position: absolute;
+  position: fixed;
   right: 5%;
   top: 6%;
   border-radius: 8px;

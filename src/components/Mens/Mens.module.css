@@ -151,7 +151,6 @@
 }
 /* ---------------------card css------------------------------------ */
 .cards {
- 
   min-height: 100%;
   width: 100%;
   display: grid;
@@ -160,7 +159,10 @@
   /* background-color: bisque; */
 }
 .card {
-  box-shadow: 2px 4px 4px -2px rgba(0, 0, 0, 0.4);
+  margin: 1rem 0;
+}
+.card:hover{
+  z-index: 999;
 }
 .card_data {
   height: 100%;
@@ -172,10 +174,10 @@
   position: relative;
   height: 100%;
   width: 100%;
- border-bottom:1px solid grey;
   /* overflow: hidden; */
 }
 .show_img {
+  border-bottom:1px solid grey;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -192,7 +194,7 @@
   font-size: 1rem;
 }
 .show_img_data {
-  top: 90%;
+  top: 96%;
   left: 0%;
   position: absolute;
   display: flex;
@@ -202,8 +204,9 @@
   gap: 0.5rem;
   height: 26%;
   width: 100%;
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.4);
-  background-color: white;
+  border-bottom: 1px solid black;
+  /* box-shadow: 4px 4px 4px -2px rgba(0, 0, 0, 0.4); */
+  background-color: rgb(255, 255, 255);
 }
 .show_img_data h1{
   font-size: 1.4rem;
