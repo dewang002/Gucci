@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Mens.module.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import useShoesData from "../../utils/useShoesData";
+import useShoesData from "../../utils/hooks/useShoesData";
 import Cards from "./Cards";
 
 function Dropdown({ title, children }) {

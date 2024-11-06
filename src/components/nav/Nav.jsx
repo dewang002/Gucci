@@ -1,37 +1,57 @@
 import React, { forwardRef, useEffect, useState, useRef } from "react";
 import style from "./Nav.module.css";
-import { Link, useLocation } from "react-router-dom";
-import { PiBagSimple } from "react-icons/pi";
-import { IoIosMenu } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa6";
-import { IoIosSearch } from "react-icons/io";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Sidemenu from "../../utils/Sidemenu";
-import { usestatus } from "../../utils/usestatus";
-import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, deleteItem, removeItem } from "../../utils/Store/Slice/addToCartSlice";
+import {
+  addItem,
+  deleteItem,
+  removeItem,
+} from "../../utils/Store/Slice/addToCartSlice";
+import { Link, useLocation } from "react-router-dom";
+import Sidemenu from "../../utils/Sidemenu";
+import { usestatus } from "../../utils/hooks/usestatus";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { IoMdClose } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa6";
+import { IoIosMenu } from "react-icons/io";
+import { IoIosSearch } from "react-icons/io";
+import { PiBagSimple } from "react-icons/pi";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 // --------------small component----------------------------
-const Navlink = forwardRef(({ title, className, onClick, items }, addcartref) => {
-  return (
-    <Link ref={addcartref} className={className} onClick={onClick} items={items}>
-      {title}
-    </Link>
-  );
-});
+const Navlink = forwardRef(
+  ({ title, className, onClick, items }, addcartref) => {
+    return (
+      <Link
+        ref={addcartref}
+        className={className}
+        onClick={onClick}
+        items={items}
+      >
+        {title}
+      </Link>
+    );
+  }
+);
 // ----------------------------------------------------------
 function Nav() {
-  const addtocart = useSelector(state => state.cart.item)
+  const addtocart = useSelector((state) => state.cart.item);
   const location = useLocation();
-  const dispatch = useDispatch()
-  const [listdata, setListdata] = useState([]);//this have that data 
+  const dispatch = useDispatch();
+  const [listdata, setListdata] = useState([]); //this have that data
   const [cartView, setCartView] = useState(false);
   const [isopen, setIsopen] = useState(false);
   const status = usestatus();
   const cart = useRef();
 
+  useGSAP(() => {
+    gsap.from(".nav", {
+      y: "-3rem",
+      duration: 0.5,
+    });
+  });
+  const lastScrollValue = useRef(230);
   useEffect(() => {
     if (location.pathname === "/") {
       gsap.registerPlugin(ScrollTrigger);
@@ -123,14 +143,38 @@ function Nav() {
         end: "150vh",
       });
     }
+
     document.addEventListener("mousedown", (e) => {
-    if (!cart.current?.contains(e.target)) setCartView(false);});
-    if (addtocart) {setListdata(addtocart)}
-    return ()=>{
+      if (!cart.current?.contains(e.target)) setCartView(false);
+    });
+
+    if (addtocart) {
+      setListdata(addtocart);
+    }
+    const handleScroll = () => {
+      const nav = document.querySelector(".nav");
+      const logo = document.querySelector(".logo");
+
+      if (nav && logo) {
+        const scrollValue = window.scrollY;
+        if (scrollValue > lastScrollValue.current) {
+          nav.style.top = "-10rem";
+          logo.style.top = "-10rem";
+        } else {
+          nav.style.top = "0";
+          logo.style.top = "0";
+        }
+        lastScrollValue.current = scrollValue;
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+
+    return () => {
       document.removeEventListener("mousedown", (e) => {
         if (!cart.current?.contains(e.target)) setCartView(false);
-        });
-    }
+      });
+      document.removeEventListener("scroll", handleScroll);
+    };
   }, [addtocart]);
 
   const handleClose = () => {
@@ -139,12 +183,14 @@ function Nav() {
   const handleclick = () => {
     setIsopen(!isopen);
   };
-  const handleRemoveItems = (val)=>{
-    dispatch(removeItem(val))
-  }
-  const handleDeleteItems = (val)=>{
-    dispatch(deleteItem(val))
-  }
+
+  const handleDeleteItems = (val) => {
+    dispatch(deleteItem(val));
+  };
+  const totalcost = listdata.reduce(
+    (acc, item) => acc + Number(item.rawPrice) * item.quantity,
+    0
+  );
   return (
     <>
       <div className={`${style.nav} nav`}>
@@ -207,42 +253,66 @@ function Nav() {
         <div className={style.body}>
           {listdata?.map((elem) => (
             <>
-            
-            <div className={style.content}>
-              <div
-                style={{
-                  width: "10rem",
-                  height: "100%",
-                }}
-              >
-                <img src={elem.alternateImage.datasrc} alt="" />
+              <div className={style.content}>
+                <div
+                  style={{
+                    width: "10rem",
+                    height: "100%",
+                  }}
+                >
+                  <img src={elem.alternateImage.datasrc} alt="" />
+                </div>
+                <div
+                  style={{
+                    height: "100%",
+                    width: "30rem",
+                    paddingTop: "2rem",
+                    lineHeight: "2.5rem",
+                  }}
+                >
+                  <h1>{elem.title}</h1>
+                  <h2>$ {Number(elem.rawPrice) * elem.quantity}</h2>
+                  {addtocart && (
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "start",
+                        alignItems: "center",
+                        gap: "1rem",
+                      }}
+                    >
+                      <h2>Quantity : </h2>
+                      <span
+                        style={{ fontSize: "1.5rem" }}
+                        onClick={() => dispatch(addItem(elem))}
+                      >
+                        +
+                      </span>
+                      <span style={{ fontSize: "1.5rem" }}>
+                        {elem.quantity}
+                      </span>
+                      <span
+                        style={{ fontSize: "1.5rem" }}
+                        onClick={() => dispatch(removeItem(elem.productCode))}
+                      >
+                        {" "}
+                        -
+                      </span>
+                      <button
+                        onClick={() => handleDeleteItems(elem.productCode)}
+                      >
+                        remove
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div
-                style={{
-                  height: "100%",
-                  width: "30rem",
-                  paddingTop: "2rem",
-                  lineHeight: "2.5rem",
-                }}
-              >
-                <h1>{elem.title}</h1>
-                <h2>{elem.price}</h2>
-                {addtocart && (
-                  <div style={{ display: "flex",justifyContent:"start",alignItems:'center',gap:'1rem' }}>
-                    <h2>Quantity : </h2>
-                    <span style={{ fontSize: "1.5rem" }} onClick={()=>dispatch(addItem(elem))}>+</span>
-                    <span style={{ fontSize: "1.5rem" }}>{elem.quantity}</span>
-                    <span style={{ fontSize: "1.5rem" }} onClick={()=>handleRemoveItems(elem.productCode)}> -</span>
-                    <button onClick={()=>handleDeleteItems(elem.productCode)}>remove</button>
-                  </div>
-                )}
-              </div>
-            </div>
             </>
           ))}
         </div>
 
         <div className={style.footer}>
+          <h3>Total Amount : ${totalcost}</h3>
           <button>CHECK OUT</button>
         </div>
       </div>

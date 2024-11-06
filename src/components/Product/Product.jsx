@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Nav from "../nav/Nav";
 import style from "./Product.module.css";
-import useShoesData from "../../utils/useShoesData";
+import useShoesData from "../../utils/hooks/useShoesData";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { IoMdClose } from "react-icons/io";
@@ -16,6 +16,19 @@ const FullImg = ({ IMG, remove }) => {
   const handleClose = () => {
     remove(false);
   };
+  useEffect(() => {
+    let ZoomImg = document.querySelector(".fullimg");
+    const zoomFeature = (e) => {
+      ZoomImg.style.setProperty("--display", "block");
+      //calculation to get the height position of mouse on that img 
+      let y = (e.offsetY * 100) / ZoomImg.offsetHeight;
+      ZoomImg.style.setProperty("--y", y + "%");
+    };
+    ZoomImg.addEventListener("mousemove", zoomFeature);
+    return () => {
+      ZoomImg.removeEventListener("mousemove", zoomFeature);
+    };
+  }, []);
   return (
     <>
       <div className={style.imgNav}>
@@ -23,8 +36,11 @@ const FullImg = ({ IMG, remove }) => {
           <IoMdClose />
         </i>
       </div>
-      <div className={style.fullimg}>
-        <img src={IMG} alt="" />
+      <div
+        style={{ "--url": `url(${IMG})`, "--display": `none`, "--y": "0%" }}
+        className={`${style.fullimg} fullimg`}
+      >
+        <img src={IMG} alt="product_img" />
       </div>
     </>
   );
@@ -32,16 +48,14 @@ const FullImg = ({ IMG, remove }) => {
 
 function Product() {
   const { id } = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [cartdata, setCartdata] = useState([]);
   const [size, setSize] = useState(false);
   const [product, setProduct] = useState([]);
   const [productdata, setproductdata] = useState([]);
   const [currentImg, setCurrentImg] = useState(false);
   const shoes = useShoesData(); //data is here
-  
-  const data = useSelector(state => state.menshoes)
-  
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -91,7 +105,7 @@ function Product() {
     setSize(!size);
   };
   const handleCartItem = () => {
-      dispatch(addItem(cartdata))
+    dispatch(addItem(cartdata));
   };
   return (
     <>
@@ -120,7 +134,8 @@ function Product() {
                         width: "100%",
                         minHeight: "90%",
                         objectFit: "cover",
-                        objectPosition: "50% -1vh"}}
+                        objectPosition: "50% -1vh",
+                      }}
                       src={chart}
                       alt="size chart"
                     />
@@ -129,7 +144,8 @@ function Product() {
               </div>
 
               <button onClick={handleCartItem}>
-                <span>Add to Cart</span> <CiShoppingCart />
+                <span>Add to Cart</span>
+                <CiShoppingCart />
               </button>
             </div>
             {/* -------------------------------------------------------*/}

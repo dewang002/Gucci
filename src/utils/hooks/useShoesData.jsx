@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addMenData } from "./Store/Slice/menShoesSlice";
+import { addMenData } from "../Store/Slice/menShoesSlice";
 
 function useShoesData() {
   const dispatch = useDispatch();

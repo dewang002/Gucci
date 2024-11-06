@@ -43,7 +43,7 @@ function Card({ img, img2, name, price, productCode, id }) {
         {/* ------------------------------------------- */}
         <div className={`${style.item_imgs}`}>
           <img src={img} alt="" />
-          {/*--------------------------------------------- */}
+        {/*--------------------------------------------- */}
           <div className={`${style.show_img}`}>
             <div className={`${style.img_box}`}>
               <Carousel infinite={true} responsive={responsive}>
@@ -62,7 +62,7 @@ function Card({ img, img2, name, price, productCode, id }) {
               <div className={`${style.show_img_data}`}>
                 <h1>{name}</h1>
                 <h2>{price}</h2>
-                Show This
+               <h3 className={style.second}>Show This</h3> 
               </div>
             </Link>
           </div>
