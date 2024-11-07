@@ -5,7 +5,7 @@ import Page2 from '../Page2/Page2'
 import Page3 from '../Page3/Page3'
 import Page4 from '../Page4/Page4'
 import Page5 from '../Page5/Page5'
-import Footer from '../Footer/footer'
+import Footer from '../Footer/Footer'
 
 function Home() {
   
