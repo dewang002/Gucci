@@ -1,5 +1,5 @@
 import React from 'react'
-import style from "./page5.module.css"
+import style from "./Page5.module.css"
 import Card from './Card'
 import { carddata } from '../../utils/data'
 function Page5() {
