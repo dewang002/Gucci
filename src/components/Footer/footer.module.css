@@ -55,6 +55,7 @@
   width: fit-content;
   height: 1.6rem;
   transition: all ease 3s;
+  font-weight: 500;
   /* background-color: red; */
 }
 .second::after{
@@ -85,7 +86,6 @@
   display: flex;
   flex-direction: column;
   gap: 1vw;
-  /* background-color: antiquewhite; */
 }
 .topContainer .box2 {
   height: 100%;
@@ -107,6 +107,7 @@
 .form h3 {
   margin-bottom: 2vw;
   color: grey;
+  font-weight: 100;
 }
 form {
   min-height: 100%;
@@ -156,6 +157,7 @@ input:valid ~ .underline:after {
 
 form h4 {
   margin-bottom: 2rem;
+  font-weight: 100;
   color: white;
   text-decoration: none;
   border-bottom: 1px solid white;
@@ -297,7 +299,7 @@ width: 100%;
 }
   .container .topContainer {
     flex-direction: column;
-    align-items: center;
+    align-items: start;
   }
   .topContainer .box1 .top {
     flex-direction: column;
@@ -312,23 +314,24 @@ width: 100%;
     width: 100%;
     gap: 4vw;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     order: 2;
   }
   .topContainer .box1 .top .right {
     height: 100%;
     width: 100%;
     gap: 4vw;
-    align-items: center;
+    align-items: start;
     order: 1;
     margin-bottom: 2rem;
   }
+  
   .topContainer .box1 .bottom {
     height: 28%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: 1rem;
     /* background-color: antiquewhite; */
   }

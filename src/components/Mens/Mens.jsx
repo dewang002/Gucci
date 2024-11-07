@@ -16,7 +16,7 @@ function Mens() {
         <div className={`${styles.main_img}`}>
           <img src="./mens-show-model(1).jpg" alt="" />
           <div className={`${styles.darken}`}>
-            <div className="" style={{ height: "9rem" }}>
+            <div className="content" style={{ height: "9rem" }}>
               <h1>Loafers for Men</h1>
               <p>
                 Defining an enduring design with House codes, the Gucci Horsebit

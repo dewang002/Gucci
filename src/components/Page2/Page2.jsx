@@ -5,7 +5,6 @@ function Page2() {
   const navigate = useNavigate()
   const handleclick = (val)=>{
     navigate(`/${val}`)
-    console.log(val)
   }
   return (
     <div className={`${style.page2}`}>

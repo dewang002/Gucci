@@ -50,21 +50,23 @@ function Card({ img, img2, name, price, productCode, id }) {
                 {img2.map((elem) => (
                   <div key={productCode}>
                     {" "}
+                    <Link
+                      to={`/Mens-loafers-shoes/product/${id}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
                     <img src={elem.src} alt="" />
+                </Link>
                   </div>
                 ))}
               </Carousel>
             </div>
-            <Link
-              to={`/Mens-loafers-shoes/product/${id}`}
-              style={{ textDecoration: "none", color: "black" }}
-            >
               <div className={`${style.show_img_data}`}>
                 <h1>{name}</h1>
                 <h2>{price}</h2>
                <h3 className={style.second}>Show This</h3> 
               </div>
-            </Link>
+              
+            
           </div>
           {/* -------------------------------- */}
         </div>

@@ -127,9 +127,11 @@
   }
   .bottom h1 {
     font-size: 2rem;
+    font-weight: 600;
     padding-bottom: 1rem;
   }
   .bottom button {
     width: 13rem;
+    font-weight: 100;
   }
 }

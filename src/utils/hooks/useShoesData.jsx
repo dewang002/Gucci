@@ -10,8 +10,9 @@ function useShoesData() {
       `https://www.gucci.com/us/en/c/productgrid?categoryCode=men-shoes-moccasins-and-loafers&show=Page&page=1`
     );
     const result = await data.json();
-    setshoes(result);
-    dispatch(addMenData(shoes?.products?.items));
+    localStorage.setItem("shoesData",JSON.stringify(result.products.items))
+    setshoes(result?.products?.items);
+    dispatch(addMenData(shoes));
   };
   useEffect(() => {
     !shoes && shoesdata();

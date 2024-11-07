@@ -34,7 +34,7 @@ function Mens_Shoes() {
 
   useEffect(() => {
     if (shoes) {
-      setdata(shoes.products.items);
+      setdata(shoes);
     }
   }, [shoes]);
 
@@ -46,7 +46,7 @@ function Mens_Shoes() {
     } else if (val === "high") {
       sethigh(true);
     }else if (val ==="loafers"){
-      setdata(shoes?.products.items)
+      setdata(shoes)
     }
   };
   

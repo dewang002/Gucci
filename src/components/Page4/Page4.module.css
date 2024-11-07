@@ -37,11 +37,14 @@
 }
 .right h3 {
   color: black;
+  font-weight: 100;
 }
 .right h1 {
+
   text-align: center;
 }
 .right p {
+  font-weight: 100;
   text-align: center;
 }
 @media (max-width: 600px) {

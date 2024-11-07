@@ -24,7 +24,7 @@
 }
 .explorebtn button{
     font-size: 0.6vw;
-    font-weight: 900;
+    font-weight: 100;
     text-transform: uppercase;
     padding: 4% 10%;
     border: 2px solid rgb(49, 49, 216);
@@ -43,7 +43,7 @@
     }
     .explorebtn{
         position: absolute;
-        top: 95%;
+        top: 85%;
         left: 50%;
         transform: translateX(-50%);
         height: 30vw;
@@ -59,10 +59,10 @@
     }
     .explorebtn button{
         font-size: 4vw;
-        font-weight: 900;
+        font-weight: 100;
         text-transform: uppercase;
         padding: 6vw 10vw;
-        border: 2px solid rgb(49, 49, 216);
+        border: 2px solid rgb(80, 80, 208);
         border-radius: 4px;
         background: white;
     }

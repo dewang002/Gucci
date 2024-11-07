@@ -51,11 +51,12 @@ function Nav() {
       duration: 0.5,
     });
   });
-  const lastScrollValue = useRef(230);
+  const lastScrollValue = useRef(400);
   useEffect(() => {
     if (location.pathname === "/") {
       gsap.registerPlugin(ScrollTrigger);
 
+      gsap.matchMedia().add("(min-width:1080px)", () => {
       ScrollTrigger.create({
         animation: gsap.fromTo(
           ".logo h1",
@@ -80,15 +81,31 @@ function Nav() {
         start: "70vh",
         end: "200vh",
       });
-
+      ScrollTrigger.create({
+        animation: gsap.fromTo(
+          ".icon,.contact",
+          {
+            color: "white",
+          },
+          {
+            color: "black",
+            y:"0rem",
+          }
+        ),
+        scrub: true,
+        trigger: ".nav",
+        start: "70vh",
+        end: "150vh",
+      });
+    })
       gsap.matchMedia().add("(max-width:600px)", () => {
         ScrollTrigger.create({
           animation: gsap.fromTo(
             ".logo h1",
             {
-              scale: 3,
-              y: "20vh",
-              x: "24vw",
+              scale: 2,
+              y: "30rem",
+              x: "3%",
               yPercent: -50,
               duration: 5,
               color: "white",
@@ -96,8 +113,8 @@ function Nav() {
             },
             {
               scale: 1,
-              y: 0,
-              x: "-4vw",
+              y: '0.2rem',
+              x: "1rem",
               yPercent: 0,
               duration: 5,
               color: "black",
@@ -106,7 +123,7 @@ function Nav() {
           scrub: true,
           trigger: ".nav",
           start: "10vh",
-          end: "200vh",
+          end: "100rem",
           // markers:true
         });
       });
@@ -135,6 +152,7 @@ function Nav() {
           },
           {
             color: "black",
+            y:"0.5rem",
           }
         ),
         scrub: true,
@@ -225,10 +243,11 @@ function Nav() {
             className={`${style.icon} icon`}
             title={"Menu"}
           />
-          <Navlink
-            style={{ color: status ? "green" : "red", textDecoration: "none" }}
+          {/* <Navlink
+          className='status'
+            style={{ color: status ? "green" : "red" }}
             title={status ? "online" : "offline"}
-          />
+          /> */}  
         </div>
       </div>
       <div className={`${style.logo} logo`}>
@@ -240,8 +259,7 @@ function Nav() {
       {/* ------------------------------add to cart---------------------------------*/}
       <div
         ref={cart}
-        className={`${style.cart} ${cartView ? style.open : " "}`}
-      >
+        className={`${style.cart} ${cartView ? style.open : " "}`}>
         <div className={style.header}>
           ADDED TO SHOPPING BAG{" "}
           <span onClick={handleClose}>
@@ -255,10 +273,7 @@ function Nav() {
             <>
               <div className={style.content}>
                 <div
-                  style={{
-                    width: "10rem",
-                    height: "100%",
-                  }}
+                className={style.productImg}
                 >
                   <img src={elem.alternateImage.datasrc} alt="" />
                 </div>
@@ -278,7 +293,7 @@ function Nav() {
                         display: "flex",
                         justifyContent: "start",
                         alignItems: "center",
-                        gap: "1rem",
+                        gap: "0.5rem",
                       }}
                     >
                       <h2>Quantity : </h2>

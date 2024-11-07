@@ -72,20 +72,21 @@ function Product() {
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 600, min: 0 },
       items: 1,
     },
   };
+
   const shoesize = useRef(null);
   useEffect(() => {
-    if (shoes?.products?.items) {
-      const filterdata = shoes?.products?.items.filter(
+    if (shoes) {
+      const filterdata = shoes?.filter(
         (elem) => elem.productCode === id
       )[0].alternateGalleryImages;
       const data = filterdata.map((elem) => {
         return elem.datasrc;
       });
-      let itemsdata = shoes?.products?.items.filter(
+      let itemsdata = shoes?.filter(
         (elem) => elem.productCode === id
       )[0];
       setproductdata(itemsdata);
@@ -98,6 +99,7 @@ function Product() {
       }
     });
   }, [shoes]);
+  
   const handleClick = (val) => {
     setCurrentImg(val);
   };
@@ -117,8 +119,8 @@ function Product() {
           <div className={style.product}>
             {/* ------------------------------------------------------ */}
             <div className={style.overlapping}>
-              <h1>{productdata.price}</h1>
               <h2>{productdata.title}</h2>
+              <h1>{productdata.price}</h1>
               <div className={style.shoeSize}>
                 <i ref={shoesize} onClick={handleClickSize}>
                   <BiRuler /> View your size

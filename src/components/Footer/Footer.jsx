@@ -19,18 +19,20 @@ function Footer() {
                   "Sitemap",
                 ].map((elem, index) => (
                   <>
-                  <h3
-                    key={index}
-                    className={index === 0 ? style.first : style.second}
-                  >
-                    {elem}
-                  </h3>
+                    <h3
+                      key={index}
+                      className={index === 0 ? style.first : style.second}
+                    >
+                      {elem}
+                    </h3>
                   </>
                 ))}
               </div>
+
               <div className={style.right}>
+                 <div><h3 className={style.first}>THE COMPANY</h3></div> 
+                <div >
                 {[
-                  "THE COMPANY",
                   "About Gucci",
                   "Gucci Equilibrium",
                   "Code of Ethics",
@@ -39,14 +41,13 @@ function Footer() {
                   "Privacy & Cookie Policy",
                   "Corporate Information",
                 ].map((elem, index) => (
-                  <h3
-                    key={index}
-                    className={index === 0 ? style.first : style.second}
-                  >
-                    {elem}
-                  </h3>
+                    <h3 className={ style.second}>
+                      {elem}
+                    </h3>
                 ))}
+                  </div>
               </div>
+
             </div>
             <div className={style.bottom}>
               {[
