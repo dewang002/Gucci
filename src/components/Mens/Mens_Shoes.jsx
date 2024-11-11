@@ -3,13 +3,15 @@ import style from "./Mens.module.css";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import useShoesData from "../../utils/hooks/useShoesData";
 import Cards from "./Cards";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Paper } from "@mui/material";
 
 function Dropdown({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleMouseEnter = () => setIsOpen(true);
   const handleMouseLeave = () => setIsOpen(false);
-
+  
   return (
     <div
       className={style.dropdownWrapper}
@@ -31,7 +33,11 @@ function Mens_Shoes() {
   const [data,setdata] = useState([])
   //👇this is the data 
   const shoes = useShoesData();
-
+  const theme = createTheme({
+    palette:{
+      mode:window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'
+    }
+  })
   useEffect(() => {
     if (shoes) {
       setdata(shoes);
@@ -51,6 +57,8 @@ function Mens_Shoes() {
   };
   
   return (
+    <ThemeProvider theme={theme}>
+      <Paper>
     <div className={`${style.show_collection}`}>
       <div className={`${style.filter_header}`}>
         <div className={`${style.left}`}>
@@ -91,7 +99,8 @@ function Mens_Shoes() {
 
       <Cards data={data} lowprice={low} highprice={high} />
     </div>
-  );
-}
+    </Paper>
+    </ThemeProvider>
+    )}
 
 export default Mens_Shoes;

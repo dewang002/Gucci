@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import style from "./App.module.css";
 import "./index.css";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Paper } from "@mui/material";
 import LocomotiveScroll from "locomotive-scroll";
 
 function App() {
@@ -23,13 +25,24 @@ function App() {
       );
     });
   }, []);
+
+  const theme = createTheme({
+    palette: {
+      mode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+    },
+  }
+);
   return (
+    <ThemeProvider theme={theme}>
+      <Paper>
     <div className={style.main} style={{ overflow: "hidden" }}>
       <Nav />
       <div className="point"></div>
       <Outlet />
     </div>
-  );
+      </Paper>
+    </ThemeProvider>
+);
 }
 
 export default App;

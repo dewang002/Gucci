@@ -17,6 +17,8 @@ import { FaRegUser } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
 import { PiBagSimple } from "react-icons/pi";
+
+import { ThemeProvider } from "@emotion/react";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(useGSAP);
 // --------------small component----------------------------
@@ -51,6 +53,11 @@ function Nav() {
       duration: 0.5,
     });
   });
+  // const theme = createTheme({
+  //   palette: {
+  //     mode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  //   },
+  // })
   const lastScrollValue = useRef(400);
   useEffect(() => {
     if (location.pathname === "/") {
@@ -65,7 +72,7 @@ function Nav() {
             y: "40vh",
             yPercent: -50,
             duration: 5,
-            color: "white",
+            color: 'white',
             ease: "power1.out",
           },
           {
@@ -73,7 +80,7 @@ function Nav() {
             y: 0,
             yPercent: 0,
             duration: 5,
-            color: "black",
+            color: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'white' : 'black',
           }
         ),
         scrub: true,
@@ -81,22 +88,7 @@ function Nav() {
         start: "70vh",
         end: "200vh",
       });
-      ScrollTrigger.create({
-        animation: gsap.fromTo(
-          ".icon,.contact",
-          {
-            color: "white",
-          },
-          {
-            color: "black",
-            y:"0rem",
-          }
-        ),
-        scrub: true,
-        trigger: ".nav",
-        start: "70vh",
-        end: "150vh",
-      });
+      
     })
       gsap.matchMedia().add("(max-width:600px)", () => {
         ScrollTrigger.create({
@@ -108,7 +100,7 @@ function Nav() {
               x: "3%",
               yPercent: -50,
               duration: 5,
-              color: "white",
+              color: 'white',
               ease: "power1.out",
             },
             {
@@ -117,7 +109,7 @@ function Nav() {
               x: "1rem",
               yPercent: 0,
               duration: 5,
-              color: "black",
+              color:  'black',
             }
           ),
           scrub: true,
@@ -135,7 +127,7 @@ function Nav() {
             backgroundColor: "transparent",
           },
           {
-            backgroundColor: "white",
+            backgroundColor:window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'black' : 'white',
           }
         ),
         scrub: true,
@@ -151,7 +143,7 @@ function Nav() {
             color: "white",
           },
           {
-            color: "black",
+            color:window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'white' : 'black',
             y:"0.5rem",
           }
         ),
@@ -218,7 +210,7 @@ function Nav() {
             title={"+ contact us"}
           />
         </div>
-        <div className={style.right}>
+        <div className={style.right} >
           <Navlink
             items={listdata.length}
             onClick={handleClose}

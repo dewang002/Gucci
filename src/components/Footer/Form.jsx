@@ -26,9 +26,6 @@ function Form({ data }) {
 
             {elem.link&&
               <Link style={{textDecoration:"none",}}>
-                {/* here we shoud have a component */}
-                {/* that component should have box with options */}
-                {/* which ever options we click that options name should be get set here  */}
                 <Country />
               </Link>
             }

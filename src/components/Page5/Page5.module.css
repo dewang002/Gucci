@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     padding: 3vw 4rem;
     gap: 1vw;
 }
@@ -43,11 +44,34 @@
     font-size: 1.4rem;
     text-align: center;
 }
-.content h4{
+.content a{
+    z-index: 999;
+    position: relative;
+    text-decoration: none;
     color: black;
     font-size: 1rem;
-    font-weight: 100;
-    
+    font-weight: 100;  
+}
+.content a::after{
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: black;
+}
+.content a:hover::after  {
+    width: 100%;
+}
+@media (prefers-color-scheme: dark){
+    .content a{
+        color: white;
+    }
+    .content a::after{
+        background-color: white;
+    }
 }
 video{
     width: 100%;

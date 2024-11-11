@@ -3,9 +3,13 @@ import Nav from "../nav/Nav";
 import styles from "./Mens.module.css";
 import Mens_Shoes from "./Mens_Shoes";
 function Mens() {
+
+ 
+
   return (
     <>
       <Nav />
+
       <div id={`${styles.mens_shoes}`}>
         <div
           className={`${styles.top_header}`}
@@ -29,6 +33,7 @@ function Mens() {
         {/* show data will be below */}
         <Mens_Shoes />
       </div>
+
     </>
   );
 }

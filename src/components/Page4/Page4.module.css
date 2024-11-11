@@ -26,6 +26,7 @@
   object-fit: contain;
 }
 .page4 .right {
+  z-index: 999;
   height: 100%;
   width: 30%;
   display: flex;
@@ -35,9 +36,32 @@
   gap: 3vw;
   /* background-color: brown; */
 }
-.right h3 {
+.right a {
+  text-decoration: none;
   color: black;
+  position: relative;
   font-weight: 100;
+}
+.right a::after{
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  background-color: rgb(255, 255, 255);
+}
+.right a:hover::after  {
+  width: 100%;
+}
+@media (prefers-color-scheme: dark){
+  .right a{
+    color: white;
+  }
+  .right a::after{
+    background-color: white;
+  }
 }
 .right h1 {
 

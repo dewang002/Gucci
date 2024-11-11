@@ -8,7 +8,6 @@
   align-items: center;
   padding: 0rem 16vw;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  background-color: white;
 }
 .contact {
   text-decoration: none;
@@ -29,6 +28,22 @@
   font-weight: 100;
   color: black;
   text-decoration: none;
+}
+@media (prefers-color-scheme: dark) {
+  .icon {
+    color: white;
+  }
+  .contact{
+    color: white;
+  }
+  .nav{
+    background-color: black;
+  }
+}
+@media (prefers-color-scheme: light){
+  .nav{
+    background-color: white;
+  }
 }
 .icon:nth-child(1) {
   font-size: 1.5vw;
@@ -79,6 +94,11 @@
 }
 .logo h1 {
   margin-top: 2rem;
+}
+@media (prefers-color-scheme: dark){
+  .logo h1{
+    color: white;
+  }
 }
 .cart {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
