@@ -89,7 +89,6 @@
   left: 50%;
   width: fit-content;
   z-index: 9999;
-  /* padding-top: 1em; */
   transform: translate(-50%,0.5rem);
   position: fixed;
 }
@@ -139,7 +138,6 @@
   height: 14rem;
   width: 100%;
   border-bottom: 1px solid rgb(199, 195, 195);
-  /* background-color: green; */
 }
 .cart .body .content {
   height: 14rem;
