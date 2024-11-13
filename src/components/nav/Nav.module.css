@@ -251,7 +251,6 @@
   }
   .icon:nth-child(5) {
     display: none;
-    /* background-color: red; */
   }
   .right {
     display: flex;
